@@ -18,6 +18,8 @@ public class Driver {
 	    Scanner userInput = new Scanner(System.in);  // for keyboard input
 	    
 	    int choice;  // holds the user's menu choice
+	    
+	    //myStore.readFile();
 
 	    // the menu system
 	    do

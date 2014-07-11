@@ -3,7 +3,7 @@ package MyPackage;
 import java.io.*;
 import java.util.*;
 
-public class Inventory {
+public class Inventory implements Serializable {
 	
 	  public static final int MAX_ITEMS   = 9999;
 	  
@@ -125,14 +125,33 @@ public class Inventory {
 		    	FileOutputStream fos = new FileOutputStream("InventoryFile");
 		    	ObjectOutputStream oos = new ObjectOutputStream(fos);
 		    	
-		    	for (int i = 0; i < inventory.size(); i++)
-		    	{
-		    		oos.writeObject(inventory.get(i));
-		    	}
+
+		    	oos.writeObject(inventory);
+		    	
 		    	fos.close();
 		    }
 		  catch (IOException e){
 			  System.out.println("Problem with file output");
+		  }
+		 
+	  }
+	  
+	  public void readFile(){
+		  
+		  try{
+			  FileInputStream fis = new FileInputStream("InventoryFile");
+			  ObjectInputStream ois = new ObjectInputStream(fis);
+			  
+			  ArrayList<Movie> inventory = (ArrayList<Movie>)ois.readObject();
+			  fis.close();
+		  }
+		  catch(IOException e)
+		  {
+			  System.out.println("Problem with file input");
+		  }
+		  catch(ClassNotFoundException e)
+		  {
+			  System.out.println("Class not found on input from file");
 		  }
 	  }
 }
