@@ -24,7 +24,8 @@ public class Movie implements Serializable{
 
 	  public String toString()
 	  {
-	    return (dfSKU.format(sku) + " " + quantity + " " + dfPrice.format(price) + " "  + title);
+	    return (dfSKU.format(sku) + " " + quantity + " " + dfPrice.format(price)
+              + " "  + title);
 	  }
 	  
 	  public int getSKU()
